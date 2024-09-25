@@ -1,0 +1,31 @@
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: dotnet-build
+spec:
+  params:
+    - name: deployment
+      description: The name of the deployment patch the image
+      type: string
+    - name: IMAGE
+      description: Location of image to be patched with
+      type: string
+  steps:
+    - name: buildimage
+      image: registry.access.redhat.com/ubi8/dotnet-80:8.0
+      command: ["/bin/bash", "-c"]
+      args:
+        - |-
+           dotnet --version
+           cd /workspaces/output/
+           ls -a
+           dotnet build
+          # oc patch deployment $(inputs.params.deployment) --patch='{"spec":{"template":{"spec":{
+          #   "containers":[{
+          #     "name": "$(inputs.params.deployment)",
+          #     "image":"$(inputs.params.IMAGE)"
+          #   }]
+          # }}}}'
+      # workspaces:
+      #   - name: source
+      #     workspace: workspace

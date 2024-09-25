@@ -7,13 +7,14 @@
 
     <IsPublishable>true</IsPublishable>
     <EnableSdkContainerSupport>true</EnableSdkContainerSupport>
-
- <ContainerRepository>dotnet-container-repo</ContainerRepository>
+    <DockerfileFile>Containerfile</DockerfileFile>
+ <!-- <ContainerRepository>dotnet-container-repo</ContainerRepository>
  <ContainerBaseImage>mcr.microsoft.com/dotnet/runtime:8.0</ContainerBaseImage>
  <ContainerFamily>alpine</ContainerFamily>
  <ContainerRuntimeIdentifier>linux-arm64</ContainerRuntimeIdentifier>
  <ContainerRegistry>image-registry.openshift-image-registry.svc:5000</ContainerRegistry>
- <ContainerImageTags>v1;latest</ContainerImageTags>
+ <ContainerImageTags>v1;latest</ContainerImageTags> -->
+
   </PropertyGroup>
 
 

@@ -13,6 +13,8 @@ spec:
   steps:
     - name: buildimage
       image: registry.access.redhat.com/ubi8/dotnet-80:8.0
+      # securityContext:
+      #   privileged: true
       command: ["/bin/bash", "-c"]
       args:
         - |-
@@ -20,7 +22,10 @@ spec:
            echo '/workspace/source/'
            ls /workspace/source/
            cd /workspace/source/
-           dotnet build
+           
+           s2i build
+          # dotnet publish /p:PublishProfile=DefaultContainer
+
   workspaces:
     - description: The git repo will be cloned onto the volume backing this Workspace.
       name: source

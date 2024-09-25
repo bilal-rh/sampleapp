@@ -7,7 +7,7 @@ spec:
     - name: deployment
       description: The name of the deployment patch the image
       type: string
-    - name: IMAGE
+    - name: subdirectory
       description: Location of image to be patched with
       type: string
   steps:
@@ -17,9 +17,14 @@ spec:
       args:
         - |-
            dotnet --version
-           cd /workspaces/output/
-           ls -a
+           echo '/workspace/source/'
+           ls /workspace/source/
+           cd /workspace/source/
            dotnet build
+  workspaces:
+    - description: The git repo will be cloned onto the volume backing this Workspace.
+      name: source
+
           # oc patch deployment $(inputs.params.deployment) --patch='{"spec":{"template":{"spec":{
           #   "containers":[{
           #     "name": "$(inputs.params.deployment)",

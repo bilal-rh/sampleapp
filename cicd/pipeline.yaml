@@ -65,8 +65,8 @@ spec:
       params:
       - name: deployment
         value: $(params.APP_NAME)
-      - name: IMAGE
-        value: $(params.IMAGE_NAME)
+      - name: subdirectory
+        value: $(params.PATH_CONTEXT)
       runAfter:
         - fetch-repository
       workspaces:

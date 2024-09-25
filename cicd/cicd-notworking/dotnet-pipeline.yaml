@@ -1,0 +1,78 @@
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: dotnet-ci-cd-pipeline
+spec:
+  params:
+    - name: git-url
+      type: string
+    - name: git-revision
+      type: string
+      default: "main"
+    - name: image-url
+      type: string
+    - name: builder-image
+      type: string
+    - name: app-name
+      type: string
+    - name: registry-url
+      type: string
+    - name: registry-username
+      type: string
+    - name: registry-password
+      type: string
+  workspaces:
+    - name: shared-workspace
+  tasks:
+    # - name: clone-repo
+    #   taskRef:
+    #     name: git-clone
+    #   params:
+    #     - name: url
+    #       value: $(params.git-url)
+    #     - name: revision
+    #       value: $(params.git-revision)
+    #   workspaces:
+    #     - name: source
+    #       workspace: shared-workspace
+
+    
+    # - name: build-source
+    #   taskRef:
+    #     name: openshift-client
+    #   runAfter:
+    #     - clone-repo
+    #   workspaces:
+    #     - name: source
+    #       workspace: shared-workspace
+    - name: build-and-push-image
+      taskRef:
+        name: build-and-push-image-s2i
+      # runAfter:
+      #   - clone-repo
+      params:
+        - name: image-url
+          value: $(params.image-url)
+        - name: builder-image
+          value: $(params.builder-image)
+        - name: registry-url
+          value: $(params.registry-url)
+        - name: registry-username
+          value: $(params.registry-username)
+        - name: registry-password
+          value: $(params.registry-password)
+        - name: app-name
+          value: $(params.app-name)
+      workspaces:
+        - name: source
+          workspace: shared-workspace
+    - name: deploy-to-openshift
+      taskRef:
+        name: deploy-to-openshift
+      runAfter:
+        - build-and-push-image
+      params:
+        - name: app-name
+          value: $(params.app-name)
+        - name: image-url
+          value: $(params.image-url)

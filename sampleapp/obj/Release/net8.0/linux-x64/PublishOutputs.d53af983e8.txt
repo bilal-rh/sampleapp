@@ -1,0 +1,7 @@
+/Users/mashraf/code/dotnet/sampleapp/sampleapp/bin/Release/net8.0/linux-x64/publish/sampleapp
+/Users/mashraf/code/dotnet/sampleapp/sampleapp/bin/Release/net8.0/linux-x64/publish/appsettings.Development.json
+/Users/mashraf/code/dotnet/sampleapp/sampleapp/bin/Release/net8.0/linux-x64/publish/appsettings.json
+/Users/mashraf/code/dotnet/sampleapp/sampleapp/bin/Release/net8.0/linux-x64/publish/sampleapp.dll
+/Users/mashraf/code/dotnet/sampleapp/sampleapp/bin/Release/net8.0/linux-x64/publish/sampleapp.deps.json
+/Users/mashraf/code/dotnet/sampleapp/sampleapp/bin/Release/net8.0/linux-x64/publish/sampleapp.runtimeconfig.json
+/Users/mashraf/code/dotnet/sampleapp/sampleapp/bin/Release/net8.0/linux-x64/publish/sampleapp.pdb

@@ -1,0 +1,16 @@
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: deploy-to-openshift
+spec:
+  params:
+    - name: app-name
+      type: string
+    - name: image-url
+      type: string
+  steps:
+    - name: deploy
+      image: openshift/origin-cli
+      script: |
+        oc new-app $(params.app-name) $(params.image-url)
+        oc set image deployment/$(params.app-name) $(params.app-name)=$(params.image-url)

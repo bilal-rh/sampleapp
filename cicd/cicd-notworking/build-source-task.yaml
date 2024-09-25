@@ -1,0 +1,14 @@
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: build-source
+spec:
+  steps:
+    - name: build
+      image: registry.access.redhat.com/ubi8/dotnet-80
+      workingDir: /workspace/source
+      script: |
+        dotnet restore
+        dotnet build -c Release
+  workspaces:
+    - name: source

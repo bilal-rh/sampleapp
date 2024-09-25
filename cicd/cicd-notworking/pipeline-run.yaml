@@ -1,0 +1,32 @@
+apiVersion: tekton.dev/v1beta1
+kind: PipelineRun
+metadata:
+  name: dotnet-ci-cd-pipelinerun
+spec:
+  pipelineRef:
+    name: dotnet-ci-cd-pipeline
+  params:
+    - name: git-url
+      value: "https://github.com/redhat-developer/s2i-dotnetcore-ex.git"
+    - name: git-revision
+      value: "main"
+    - name: image-url
+      value: "image-registry.openshift-image-registry.svc:5000/mashraf-dev/app-dotnet:latest"
+    - name: builder-image
+      value: "registry.access.redhat.com/ubi8/dotnet-80:latest"
+    - name: app-name
+      value: "your-app-name"
+    - name: registry-url
+      value: "your-registry-url"
+    - name: registry-username
+      value: "your-registry-username"
+    - name: registry-password
+      value: "your-registry-password"
+  workspaces:
+    - name: shared-workspace
+      volumeClaimTemplate:
+        spec:
+          accessModes: ["ReadWriteOnce"]
+          resources:
+            requests:
+              storage: 1Gi

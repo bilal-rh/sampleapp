@@ -1,0 +1,8 @@
+/Users/mashraf/code/dotnet/sampleapp/sampleapp/bin/Release/net8.0/publish/sampleapp
+/Users/mashraf/code/dotnet/sampleapp/sampleapp/bin/Release/net8.0/publish/appsettings.Development.json
+/Users/mashraf/code/dotnet/sampleapp/sampleapp/bin/Release/net8.0/publish/appsettings.json
+/Users/mashraf/code/dotnet/sampleapp/sampleapp/bin/Release/net8.0/publish/sampleapp.dll
+/Users/mashraf/code/dotnet/sampleapp/sampleapp/bin/Release/net8.0/publish/sampleapp.deps.json
+/Users/mashraf/code/dotnet/sampleapp/sampleapp/bin/Release/net8.0/publish/sampleapp.runtimeconfig.json
+/Users/mashraf/code/dotnet/sampleapp/sampleapp/bin/Release/net8.0/publish/sampleapp.pdb
+/Users/mashraf/code/dotnet/sampleapp/sampleapp/bin/Release/net8.0/publish/runtimes/win/lib/net8.0/System.Diagnostics.EventLog.Messages.dll

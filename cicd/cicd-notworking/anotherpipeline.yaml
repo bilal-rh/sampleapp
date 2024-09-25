@@ -1,0 +1,91 @@
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: dotnet-pipeline
+spec:
+  workspaces:
+    - name: shared-workspace
+  params:
+    - name: git-url
+      type: string
+    - name: git-revision
+      type: string
+      default: "dotnet-8.0"
+    - name: image-name
+      type: string
+    - name: app-name
+      type: string
+  tasks:
+    - name: fetch-repository
+      taskRef:
+        name: git-clone
+        kind: ClusterTask
+      workspaces:
+        - name: output
+          workspace: shared-workspace
+      params:
+        - name: url
+          value: $(params.git-url)
+        - name: revision
+          value: $(params.git-revision)
+        - name: subdirectory
+          value: ""
+        - name: deleteExisting
+          value: "true"
+
+    - name: build-image
+      taskRef:
+        name: s2i-dotnet
+        kind: ClusterTask
+      runAfter:
+        - fetch-repository
+      workspaces:
+        - name: source
+          workspace: shared-workspace
+      params:
+        - name: BUILDER_IMAGE
+          value: registry.access.redhat.com/ubi9/dotnet-80
+        - name: IMAGE
+          value: $(params.image-name)
+        - name: PATH_CONTEXT
+          value: .
+        - name: TLSVERIFY
+          value: "false"
+    - name: deploy-image
+      taskRef:
+        name: openshift-client
+        kind: ClusterTask
+      runAfter:
+        - build-image
+      params:
+        - name: SCRIPT
+          value: |
+            oc new-app $(params.image-name) --name=$(params.app-name) -l app=$(params.app-name) || oc rollout latest dc/$(params.app-name)
+            oc expose svc/$(params.app-name) || true
+
+---
+apiVersion: tekton.dev/v1beta1
+kind: PipelineRun
+metadata:
+  name: dotnet-pipeline-run
+spec:
+  pipelineRef:
+    name: dotnet-pipeline
+  workspaces:
+    - name: shared-workspace
+      volumeClaimTemplate:
+        spec:
+          accessModes:
+            - ReadWriteOnce
+          resources:
+            requests:
+              storage: 1Gi
+  params:
+    - name: git-url
+      value: "https://github.com/redhat-developer/s2i-dotnetcore-ex.git"
+    - name: git-revision
+      value: "dotnet-8.0"
+    - name: image-name
+      value: "image-registry.openshift-image-registry.svc:5000/$(context.pipelineRun.namespace)/dotnet-app:latest"
+    - name: app-name
+      value: "dotnet-app"

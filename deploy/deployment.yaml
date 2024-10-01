@@ -25,19 +25,19 @@ spec:
       terminationGracePeriodSeconds: 5
       containers:
       #todo: - pass project/ns and app name as argumement
-        - image: image-registry.openshift-image-registry.svc:5000/mashraf-dev/app-sample
+        - image: image-registry.openshift-image-registry.svc:5000/mashraf-dev/app-sample:latest
           imagePullPolicy: "Always"
           name: app-sample
           ports:
             - containerPort: 8080
               protocol: TCP
-          volumeMounts:
-          - name: config-volume
-            mountPath: /app/config
-      volumes:
-      - name: config-volume
-        configMap:
-          name: demo-config
+      #     volumeMounts:
+      #     - name: config-volume
+      #       mountPath: /app/config
+      # volumes:
+      # - name: config-volume
+      #   configMap:
+      #     name: demo-config
           # items:
           # - key: AppSettings.json
           #   path: AppSettings.json

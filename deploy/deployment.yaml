@@ -2,8 +2,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: app-dotnet
-  name: app-dotnet
+    app: app-sample
+  name: app-sample
 spec:
   strategy:
     type: RollingUpdate
@@ -13,21 +13,21 @@ spec:
       maxUnavailable: 20% # The value can be an absolute number (for example, 5) or a percentage of desired Pods (for example, 10%). 
       # maxSurge is an optional field that specifies the maximum number of Pods that can be created over the desired number of Pods.
       maxSurge: 20%
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
-      app: app-dotnet
+      app: app-sample
   template:
     metadata:
       labels:
-        app: app-dotnet
+        app: app-sample
     spec:
-      terminationGracePeriodSeconds: 30
+      terminationGracePeriodSeconds: 5
       containers:
       #todo: - pass project/ns and app name as argumement
-        - image: image-registry.openshift-image-registry.svc:5000/mashraf-dev/app-dotnet:latest
+        - image: image-registry.openshift-image-registry.svc:5000/mashraf-dev/app-sample
           imagePullPolicy: "Always"
-          name: app-dotnet
+          name: app-sample
           ports:
             - containerPort: 8080
               protocol: TCP
@@ -38,3 +38,6 @@ spec:
       - name: config-volume
         configMap:
           name: demo-config
+          # items:
+          # - key: AppSettings.json
+          #   path: AppSettings.json

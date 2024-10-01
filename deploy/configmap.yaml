@@ -13,6 +13,6 @@ data:
         }
       },
       "AppConfig":{
-      "ConnectionString":"localhost"
+      "Connection":"localhost"
       }
     }

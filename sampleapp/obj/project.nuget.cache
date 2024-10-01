@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "RfSM9JDdqvY=",
+  "dgSpecHash": "v2qdHuK5KcU=",
   "success": true,
   "projectFilePath": "/Users/mashraf/code/dotnet/sampleapp/sampleapp/sampleapp.csproj",
   "expectedPackageFiles": [
@@ -31,11 +31,11 @@
     "/Users/mashraf/.nuget/packages/microsoft.extensions.options/8.0.0/microsoft.extensions.options.8.0.0.nupkg.sha512",
     "/Users/mashraf/.nuget/packages/microsoft.extensions.options.configurationextensions/8.0.0/microsoft.extensions.options.configurationextensions.8.0.0.nupkg.sha512",
     "/Users/mashraf/.nuget/packages/microsoft.extensions.primitives/8.0.0/microsoft.extensions.primitives.8.0.0.nupkg.sha512",
+    "/Users/mashraf/.nuget/packages/restsharp/112.0.0/restsharp.112.0.0.nupkg.sha512",
     "/Users/mashraf/.nuget/packages/system.diagnostics.diagnosticsource/8.0.0/system.diagnostics.diagnosticsource.8.0.0.nupkg.sha512",
     "/Users/mashraf/.nuget/packages/system.diagnostics.eventlog/8.0.0/system.diagnostics.eventlog.8.0.0.nupkg.sha512",
     "/Users/mashraf/.nuget/packages/system.text.encodings.web/8.0.0/system.text.encodings.web.8.0.0.nupkg.sha512",
-    "/Users/mashraf/.nuget/packages/system.text.json/8.0.0/system.text.json.8.0.0.nupkg.sha512",
-    "/Users/mashraf/.nuget/packages/microsoft.netcore.app.host.linux-x64/8.0.7/microsoft.netcore.app.host.linux-x64.8.0.7.nupkg.sha512"
+    "/Users/mashraf/.nuget/packages/system.text.json/8.0.0/system.text.json.8.0.0.nupkg.sha512"
   ],
   "logs": []
 }

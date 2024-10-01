@@ -31,3 +31,10 @@ spec:
           ports:
             - containerPort: 8080
               protocol: TCP
+          volumeMounts:
+          - name: config-volume
+            mountPath: /app/config
+      volumes:
+      - name: config-volume
+        configMap:
+          name: demo-config

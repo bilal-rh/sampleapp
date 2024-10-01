@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/mashraf/code/dotnet/sampleapp/sampleapp/sampleapp.csproj": {}
+    "/Users/mashraf/code/dotnet/sampleapp/sampleapp.Tests/sampleapp.Tests.csproj": {}
   },
   "projects": {
-    "/Users/mashraf/code/dotnet/sampleapp/sampleapp/sampleapp.csproj": {
+    "/Users/mashraf/code/dotnet/sampleapp/sampleapp.Tests/sampleapp.Tests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/mashraf/code/dotnet/sampleapp/sampleapp/sampleapp.csproj",
-        "projectName": "sampleapp",
-        "projectPath": "/Users/mashraf/code/dotnet/sampleapp/sampleapp/sampleapp.csproj",
+        "projectUniqueName": "/Users/mashraf/code/dotnet/sampleapp/sampleapp.Tests/sampleapp.Tests.csproj",
+        "projectName": "sampleapp.Tests",
+        "projectPath": "/Users/mashraf/code/dotnet/sampleapp/sampleapp.Tests/sampleapp.Tests.csproj",
         "packagesPath": "/Users/mashraf/.nuget/packages/",
-        "outputPath": "/Users/mashraf/code/dotnet/sampleapp/sampleapp/obj/",
+        "outputPath": "/Users/mashraf/code/dotnet/sampleapp/sampleapp.Tests/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/mashraf/.nuget/NuGet/NuGet.Config"
@@ -20,6 +20,7 @@
           "net8.0"
         ],
         "sources": {
+          "/usr/local/share/dotnet/library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -43,13 +44,21 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
-            "Microsoft.Extensions.Hosting": {
+            "Microsoft.NET.Test.Sdk": {
               "target": "Package",
-              "version": "[8.0.0, )"
+              "version": "[17.8.0, )"
             },
-            "RestSharp": {
+            "coverlet.collector": {
               "target": "Package",
-              "version": "[112.0.0, )"
+              "version": "[6.0.0, )"
+            },
+            "xunit": {
+              "target": "Package",
+              "version": "[2.5.3, )"
+            },
+            "xunit.runner.visualstudio": {
+              "target": "Package",
+              "version": "[2.5.3, )"
             }
           },
           "imports": [
@@ -64,14 +73,11 @@
           "assetTargetFallback": true,
           "warn": true,
           "frameworkReferences": {
-            "Microsoft.AspNetCore.App": {
-              "privateAssets": "none"
-            },
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.402/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.303/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

@@ -28,3 +28,4 @@
 /Users/mashraf/code/dotnet/sampleapp/sampleapp/obj/Debug/net8.0/sampleapp.pdb
 /Users/mashraf/code/dotnet/sampleapp/sampleapp/obj/Debug/net8.0/sampleapp.genruntimeconfig.cache
 /Users/mashraf/code/dotnet/sampleapp/sampleapp/obj/Debug/net8.0/ref/sampleapp.dll
+/Users/mashraf/code/dotnet/sampleapp/sampleapp/obj/Debug/net8.0/sampleapp.sourcelink.json
